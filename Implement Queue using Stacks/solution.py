@@ -21,7 +21,42 @@ class Stack:
     def is_empty(self):
         return not self.stack
     
+class MyQueue(object):
+    def __init__(self):
+        self.first_stack = Stack()
+        self.second_stack = Stack()
 
+    def push(self, x):
+        """
+        :type x: int
+        :rtype: None
+        """
+        self.first_stack.push(x)
+
+    def pop(self):
+        """
+        :rtype: int
+        """
+        if self.second_stack.is_empty():
+            while not self.first_stack.is_empty():
+                self.second_stack.push(self.first_stack.pop())
+        return self.second_stack.pop()
+
+    def peek(self):
+        """
+        :rtype: int
+        """
+        if self.second_stack.is_empty():
+            while not self.first_stack.is_empty():
+                self.second_stack.push(self.first_stack.pop())
+        return self.second_stack.peek()
+        
+
+    def empty(self):
+        """
+        :rtype: bool
+        """
+        return self.first_stack.is_empty() and self.second_stack.is_empty()
         
 
 
