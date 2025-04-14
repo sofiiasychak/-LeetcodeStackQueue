@@ -85,4 +85,3 @@ class MyQueue(object):
         Checks if the queue is empty.
         """
         return self.first_stack.is_empty() and self.second_stack.is_empty()
-
